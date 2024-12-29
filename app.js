@@ -55,14 +55,17 @@ const fs = require('fs');
 let rawdata = fs.readFileSync('route-config.json');
 let routers = JSON.parse(rawdata);
 routers.forEach(function (route){
+  console.log(route)
   var r = require(route.router);
   console.log("add route  : " + route.path + "");
 
   let logic = route.logic;
   if(logic != null)
     logic = require(route.logic)
-
+  console.log(route.logic)
   console.log(logic)
+  console.log("\n")
+
   let newRouter = r.getRouter(logic);
   app.use(route.path,  newRouter)
 })
