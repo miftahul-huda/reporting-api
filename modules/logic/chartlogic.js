@@ -59,6 +59,7 @@ class ChartLogic
         let dataItems  = data.data;
         let configDatasets = [];
         let values = [];
+        let colors = ['#338aff', '#ef141e', '#a256b0',  '#86ff33', '#cc1e43', '#dff311', '#C70039', '#11f3d1', '#f311d4', '#1155f3', '#11f39a', '#6896ba', '#ea602c', '#5673b0', '#a256b0']
 
         labelField = labelField.split(".")
         labelField = labelField[labelField.length - 1]
@@ -91,6 +92,7 @@ class ChartLogic
             realDatasets.push(dataset[datasetField  ]);
         })
 
+        let counter = 0;
         realDatasets.map((dataset)=>{
             let datasetLabelData = [];
 
@@ -103,11 +105,22 @@ class ChartLogic
                     datasetLabelData.push("0");
             });
 
+            let clr = null;
+            if(counter < colors.length)
+            {
+                clr = colors[counter];
+                counter++;
+            }
+            else
+            {
+                clr = this.getRandomColor();
+                colors.push(clr);
+            }
             let itemConfig = {
                 label: dataset,
                 data: datasetLabelData,
-                backgroundColor: this.getRandomColor(),
-                borderColor: this.getRandomColor(),
+                backgroundColor: clr,
+                borderColor: clr,
                 borderWidth: 1
             }
             configDatasets.push(itemConfig);

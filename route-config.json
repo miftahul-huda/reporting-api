@@ -1,7 +1,7 @@
 [    
     { "path" :  "/report", "router"  : "./routes/report", "logic" : "./modules/logic/reportlogic" },
     { "path" :  "/reportfield", "router"  : "./routes/generic", "logic" : "./modules/logic/reportfieldlogic" },
-    { "path" :  "/chartconfig", "router"  : "./routes/generic", "logic" : "./modules/logic/chartconfiglogic" },
+    { "path" :  "/chartconfig", "router"  : "./routes/chartconfigrouter", "logic" : "./modules/logic/chartconfiglogic" },
     { "path" :  "/chart", "router"  : "./routes/chartrouter", "logic" : "./modules/logic/chartlogic" }
 
 ]

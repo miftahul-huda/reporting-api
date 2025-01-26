@@ -30,6 +30,26 @@ class ChartConfigLogic extends CrudLogic {
         let order = [['createdAt', 'DESC']];
         return order;
     }
+
+    static async getChartConfigByReportID(reportID)
+    {
+        try
+        {
+            let model = this.getModel();
+            let result = await model.findAll({
+                where: {
+                    reportID: reportID
+                }
+            })
+
+            return { success: true, payload: result}
+        }
+        catch(e)
+        {
+            console.log(e)
+            throw e;
+        }
+    }
 }
 
 module.exports = ChartConfigLogic;
